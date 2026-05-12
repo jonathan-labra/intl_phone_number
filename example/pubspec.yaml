@@ -1,0 +1,16 @@
+name: example
+description: Ejemplo de uso de intl_phone_number
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  intl_phone_number:
+    path: ../
+
+flutter:
+  uses-material-design: true
