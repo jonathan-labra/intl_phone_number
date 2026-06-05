@@ -52,6 +52,12 @@ class AsYouTypeFormatter extends TextInputFormatter {
         (String? value) {
           String parsedText = parsePhoneNumber(value);
 
+          // Don't overwrite if the formatter stripped digits the user just typed
+          final parsedDigits = parsedText.replaceAll(separatorChars, '');
+          if (parsedDigits.length < rawText.length) {
+            return;
+          }
+
           int newCursorPosition = 0;
 
           if (digitsBeforeCursor > 0 || digitsAfterCursor > 0) {
