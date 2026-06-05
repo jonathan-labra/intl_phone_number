@@ -400,7 +400,7 @@ class _InputWidgetView
                 onSaved: state.onSaved,
                 scrollPadding: widget.scrollPadding,
                 inputFormatters: [
-                  LengthLimitingTextInputFormatter(widget.maxLength),
+                  DigitsLengthLimitingFormatter(widget.maxLength),
                   widget.formatInput
                       ? AsYouTypeFormatter(
                           isoCode: countryCode,

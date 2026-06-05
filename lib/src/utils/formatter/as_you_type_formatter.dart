@@ -136,3 +136,22 @@ class AsYouTypeFormatter extends TextInputFormatter {
     return dialCode.contains('+1');
   }
 }
+
+class DigitsLengthLimitingFormatter extends TextInputFormatter {
+  final int maxDigits;
+  final RegExp _nonDigits = RegExp(r'[^\d]');
+
+  DigitsLengthLimitingFormatter(this.maxDigits);
+
+  @override
+  TextEditingValue formatEditUpdate(
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
+    final digits = newValue.text.replaceAll(_nonDigits, '');
+    if (digits.length > maxDigits) {
+      return oldValue;
+    }
+    return newValue;
+  }
+}
